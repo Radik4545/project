@@ -1,0 +1,339 @@
+html {  
+    font-family: Inter; /*Стиль текста*/
+    scroll-behavior: smooth /*Значение изменяет скорость обращения к блоку по указателю*/
+}
+* { /* Знак * это универсальный селектор => применение ко всем элементам страницы, все вместе с margin и padding это сброс CSS (разные браузеры некоторые прля используют по умолчанию и может появится не запланированный отступ)*/
+    margin: 0; /*Отступ элемента от элемента снаружи*/
+    padding: 0; /*Отступ внутри, от края элемента до самого содержимого*/
+    box-sizing: border-box; /*определяет как вычисляется общая ширина и высота элемента, border-box говорит браузеру учитывать любые границы и внутренние отступы в значениях, которые вы указываете в ширине и высоте элемента*/
+    border-style: none; /*Стиль рамки. Например solid добавляет тонкую линию как край блока элемента*/
+    border-width: 0;  /*Ширина рамки элемента (прикол она может тоэе быть не 0)*/
+    user-select: none; /*Определяет может ли пользователь что либо выбрать и удержав перетянуть*/
+}
+body {  /**/ /*/**/    
+    font-weight: 400; /* жирность текста, усиливает начертание текста (пробуй 900)*/
+    /*font-style: normal; /*По сути типа курсива или просто наклон: normal, italic, or oblique (можно регклировать наклон в градусах, например: font-style: oblique 40deg; (хотя у меня почему-то не работает))*/
+    /*text-decoration: none; /*Это свойство подчеркивания c настройкой этой линии: волнистая, точками, можно вообще сверху и снизу слова*/
+    /*text-transform: none; /*Свойство которым можно менять регистр по типу: каждое слово с большой буквы или все буквы в верхнем регистре и т.д.*/
+    line-height: 1.15; /*Значение изменяет дистанцию между стрроками текста*/
+    /*letter-spacing: normal; /*Свойство ответственное за отступы между буквами*/ 
+}
+/*Ниже два CSS правила что бы не выделялось ничего*/
+::selection { /* изменение свойств выделения текста (можно менять цвет и т.д.) (например можно для отдельного вида элемента: a::selection)*/
+    background: transparent; /*Выделяемый текст выделяется бесцветно*/
+}
+::-moz-selection {
+    background: transparent;
+}
+body::-webkit-scrollbar {
+    display: none;
+    width: 0vw; /* Ширина всего элемента навигации 
+    /*Доступ к свойствам скроллбара, убрал потому что он приводит к появлению горизонтального скроллабара*/
+}
+span {
+    pointer-events: none; /*определение распростронение возможности активировать событие*/
+    cursor: default; /*Регулирование изменение курсора при наведении*/
+} 
+a {
+    pointer-events: auto; /*В <a> обернуты картинки и ссылки вверху страницы*/ 
+}
+img {  
+    pointer-events: none;
+    display: block; /*В данном случае важен так как есть наложенные картинки и они имеют зазор если убрать это свойство. Способ отображения: none - ничего не отображается; block - идут вертикально обьекты; inline - обьекты в ряд но может переноситься и задавать ширину и высоту нельзя (они определяются по содержимому; inline-block - в ряд и еще можно задавать высоту и ширину); */
+    /*vertical-align: middle; /*не работает с block, а так выравнивает их по горизонтальной середине каждого*/
+}
+
+
+
+
+
+/*Далее классы для основных жлементов страницы*/
+.rectangle {
+    position: relative;
+    width: 120vw;
+    height: 56vw;
+    background: #6CD4B5;
+}
+.lable {
+    left: 3.9%;
+    top: 5%;
+    position: relative;
+    display: flex;
+    width: 95%;
+    gap: 6.25%;
+}
+.lable-main {
+    width: 9.375%;
+    height: 9.375%;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+}
+.lable-text {
+    width: 44.6%;
+    height: 9.375%;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+}
+.textNavigationUp {
+    left: 4%;
+    width: 30%;
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    position: relative;
+}
+.textNavigationIn {
+    display: flex;
+    font-weight: 250;
+    font-size: 2vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10%;
+    position: relative;
+}
+.textNavigationIn a {
+    text-decoration: none;
+    color: #000;
+}
+.textNavigationIn a:active {
+    color: none;
+}
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5vw;
+    float: left;
+}
+.home-frame {
+    left: 0%;
+    top: 0.8%;
+    width: 100vw;
+    height: 399.1vw;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 1);
+}
+.home-text {
+    color: rgba(0, 0, 0, 1);
+    left: 4vw;
+    position: relative;
+    width: 40%;
+    height: 0.9%;
+    font-size: 7vw;
+    font-style: Bold;
+    text-align: left;
+    font-family: Aeonik;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+.comtainer-scroll-img {
+    margin-bottom: 1.6vw;
+    overflow: scroll auto;  
+    width: 100vw; 
+    height: 37.5vw;  
+    flex-direction: row;
+}
+.comtainer-scroll-img::-webkit-scrollbar {
+    display: none;
+    width: 0vw;
+}
+.scroll-img {
+    scroll-snap-type: x; 
+    height: 37.5vw; 
+    display: flex; 
+    user-select: none;
+}
+.border-img {
+    height: 37.5vw; 
+    width: 4vw; 
+    pointer-events: none; 
+    user-select: none; 
+    cursor: default;
+    cursor: default;
+}
+.text_over_image {
+    position: absolute;
+    left: 8vw;
+    display: flex;
+    height: 4vw;
+    gap: 3.8vw;
+    font-family: Aeonik;
+    color: #000;
+    align-items: center;
+}
+.text_over_image1 {
+    width: 12.5vw;
+    font-size: 1.8vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.text_over_image2 {
+    width: 31.3vw;
+    font-size: 1.25vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.text_rectangle {
+    position: absolute;
+    left: 8vw;
+    display: flex;
+    height: 4vw;
+    font-style: Bold;
+    text-align: left;
+    color: #000;
+    flex-direction: column;
+    width: 31.9vw;
+    padding: 3.9vw 0vw 3.9vw 3.9vw;
+    gap: 3.9vw;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    left: 64.2vw;
+}
+.home-text16 {
+    width: 12.3vw;
+    height: auto;
+    font-weight: 700;
+    font-size: 1.8vw;
+    font-family: Aeonik;
+}
+.home-text18 {
+    width: 27.3vw;
+    height: auto;
+    font-style: Regular;
+    font-weight: 400;
+    font-size: 1.25vw;
+    font-family: Aeonik;
+}
+.home-text19 {
+    left: 4.4vw;
+    position: absolute;
+    width: 91.6vw;
+    height: auto;
+    font-style: Regular;
+    font-weight: 400;
+    font-size: 1.9vw;
+    font-family: Aeonik;
+}
+
+
+
+
+
+/*Далее идут классы для картинок*/
+.img-rectangle1 {
+    width: 21.1vw;
+    height: 37.5vw;
+}
+.img-rectangle2 {
+    width: 37.5vw;
+    height: 37.5vw;
+}
+.img-rectangle3 {
+    width: 21.9vw;
+    height: 18.75vw;
+}
+.img-rectangle4 {
+    width: 21.9vw;
+    height: 37.5vw;
+}
+
+
+.img-rectangle5 {
+    height: 37.5vw;
+    width: 14.1vw;
+}
+.img-rectangle6 {
+    height: 37.5vw;
+    width: 21.4vw;
+}
+.img-rectangle7 {
+    height: 37.5vw;
+    width: 25vw;
+}
+.img-rectangle8 {
+    height: 18.75vw;
+    width: 14.1vw;
+}
+.img-rectangle9 {
+    height: 37.5vw;
+    width: 18vw;
+}
+.img-rectangle10 {
+    height: 37.5vw;
+    width: 39.1vw;
+}
+/*Конец классов для картинок*/
+
+
+
+
+
+/*Далее идет правила для логотипа*/
+.lable-letter1 {
+    width: 15%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter2 {
+    width: 5%;
+    left: 15.8%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter3 {
+    width: 5%;
+    left: 21.6%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter4 {
+    width: 15%;
+    left: 27.4%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter5 {
+    width: 14%;
+    left: 43%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter6 {
+    width: 5%;
+    left: 58%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter7 {
+    width: 12%;
+    left: 64.5%;
+    bottom: 0%;
+    position: relative;
+}
+.lable-letter8 {
+    width: 15%;
+    left: 78%;
+    bottom: 0%;
+    position: absolute;
+}
+.lable-letter9 {
+    width: 15%;
+    left: 94.5%;
+    bottom: 0%;
+    position: absolute;
+}
+/*Конец области с правилами для логотипа*/
